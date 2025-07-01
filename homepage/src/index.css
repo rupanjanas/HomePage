@@ -1,13 +1,43 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* src/styles/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'); /* Example font */
+
+:root {
+  --primary-blue: #4285F4; /* Based on the image's "KEENECT-SOFTWARE" text */
+  --text-dark: #333;
+  --text-light: #eee;
+  --background-white-subtle: #f5f5f5; /* For the tiles */
+  --header-bg: rgba(255, 255, 255, 0.8); /* Slightly transparent header */
+  --header-height: 60px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif; /* Or your preferred font */
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--background-white-subtle);
+  overflow-x: hidden; /* Prevent horizontal scroll due to 3D */
+}
+
+/* Base styles for common elements */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.5em;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
 }
