@@ -1,0 +1,34 @@
+.grid-background {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  grid-auto-rows: 80px;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  padding: 4px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.tile {
+  background: #f9f9f9;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05),
+              inset 0 -2px 4px rgba(255,255,255,0.8);
+  border-radius: 4px;
+  animation: ripple 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes ripple {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.96);
+    opacity: 0.95;
+  }
+}

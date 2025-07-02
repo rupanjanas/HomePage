@@ -1,20 +1,19 @@
 /* src/components/ScrollDownIndicator/ScrollDownIndicator.module.css */
 .scrollDown {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 5px;
-  color: var(--text-dark); /* Or white if preferred against the 3D background */
-  font-size: 0.9em;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  animation: bounce 2s infinite; /* Simple bouncing animation */
+  gap: 8px; /* spacing between text and arrow */
+  font-size: 16px;
+  font-weight: 500;
+  
 }
 
 .arrow {
-  font-size: 1.5em; /* Larger arrow */
+  color: #007BFF; /* Bootstrap blue, adjust if needed */
+  font-size: 18px;
+   animation: bounce 5s infinite; /* Simple bouncing animation */
 }
+
 
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {

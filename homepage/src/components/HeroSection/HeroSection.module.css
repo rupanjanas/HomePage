@@ -34,13 +34,13 @@
 }
 
 .heroTitle {
-  font-size: 5vw; /* Responsive font size */
+  font-size: 3vw; /* Responsive font size */
   color: var(--primary-blue);
-  font-weight: 700;
+  font-weight: 500;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 80px; /* Space between title and scroll indicator */
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 8px;
 }
 
 @media (max-width: 768px) {
