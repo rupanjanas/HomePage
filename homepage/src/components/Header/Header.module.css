@@ -1,105 +1,191 @@
-/* Header.module.css */
+/* Base styles for desktop first */
 
 .header {
-  position: fixed;
+   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 64px;
-  background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
-  z-index: 1000;
-  box-sizing: border-box;
-}
-.rightSection {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  -webkit-backdrop-filter: blur();
-  backdrop-filter: blur(50px);
+  padding: 1rem 1.5rem; /* Padding for header */
+  position: relative; /* Needed for absolute positioning of mobile overlay */
+  z-index: 20;
 }
 
+/* Left section: Logo and (on mobile) the mobile demo button stacked */
+.leftSection {
+  display: flex;
+  flex-direction: row; /* Default: row on desktop */
+  align-items: center;
+  gap: 1rem; /* Space between logo and other elements in this section */
+}
+
+/* Logo styling */
 .logo {
   display: flex;
   align-items: center;
-  padding: 8px 16px;
-  border-radius: 8px;
-  background: white;
-  font-weight: 500;
-  font-size: 1rem;
-  color: black;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  gap: 0.5rem;
+  font-weight: 300;
+  font-size: 1.125rem; /* Equivalent to text-lg */
+  color: #333; /* Darker color for logo text */
 }
 
-.logo img {
-  height: 24px;
-  margin-right: 10px;
+.logo svg {
+  color: #3b82f6; /* Blue-500 equivalent */
 }
 
-.nav ul {
-  list-style: none;
+/* Right Section: Navigation and Desktop Demo Button */
+.rightSection {
   display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Space between nav and desktop demo button */
+}
+
+/* Desktop Navigation (visible on desktop, hidden on mobile) */
+.desktopNav ul {
+  display: flex; /* Visible by default on desktop */
+  list-style: none;
   margin: 0;
   padding: 0;
-  gap:16px;
+  gap: 1.5rem; /* Space between nav items */
 }
 
-.nav a {
-  color: black;
-  font-weight: 300;
-  font-size: 0.95rem;
+.desktopNav a {
   text-decoration: none;
-  position: relative;
-  padding: 4px 0;
-  transition: color 0.3s ease;
+  color: #555; /* Nav link color */
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
 }
 
-.nav a:hover {
-  color: #2673f0;
+.desktopNav a:hover {
+  color: #3b82f6; /* Hover color */
 }
 
-.nav a::after {
-  content: '';
+/* Base styles for all Request Demo Buttons */
+.requestDemoButtonBase {
+  padding: 0.5rem 1rem;
+  background-color: #333; /* Dark gray background */
+  color: white;
+  border: none;
+  border-radius: 0.25rem; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex; /* For icon alignment */
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease-in-out;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.requestDemoButtonBase:hover {
+  background-color: #555; /* Darker hover */
+}
+
+/* Desktop Request Demo Button - Visible by default, hidden on mobile */
+.desktopRequestDemoButton {
+  composes: requestDemoButtonBase; /* Inherit base styles */
+  display: flex; /* Show on desktop */
+}
+
+/* Mobile Request Demo Button - Hidden by default, visible on mobile */
+.mobileRequestDemoButton {
+  composes: requestDemoButtonBase; /* Inherit base styles */
+  display: none; /* Hide on desktop */
+}
+
+/* Mobile Hamburger Button (hidden on desktop, visible on mobile) */
+.hamburgerButton {
+  display: none; /* Hidden by default on desktop */
+  background: none;
+  border-radius:4px;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: #333; /* Icon color */
+  color:#fff
+}
+
+/* Mobile Nav Overlay (hidden by default, visible when menu is open) */
+.mobileNavOverlay {
+  display: none; /* Hidden by default */
   position: absolute;
-  bottom: -4px;
+  top: 100%; /* Position right below the header */
   left: 0;
-  width: 0%;
-  height: 2px;
-  background-color: #2673f0;
-  transition: width 0.3s ease;
+  width: 100%;
+  background-color: #fff; /* Background for the mobile menu */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 1rem;
 }
 
-.nav a:hover::after {
+.mobileNavOverlay ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
   width: 100%;
 }
 
-.requestDemoButton {
-  background-color: #1c1b1b;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-  border: none;
-  outline: none;
+.mobileNavOverlay a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.requestDemoButton::after {
-  content: '▶';
-  font-size: 0.85em;
-  color: #2673f0;
+.mobileNavOverlay a:hover {
+  background-color: #f0f0f0;
 }
 
-.requestDemoButton:hover {
-  background-color: #333;
-  transform: translateY(-1px);
-  transition: all 0.2s ease;
+/* ============================================== */
+/* MOBILE RESPONSIVENESS (BREAKPOINT at max-width: 767px) */
+/* ============================================== */
+@media (max-width: 767px) { /* Styles for screens smaller than 768px */
+  .header {
+    flex-wrap: wrap; /* Allow items to wrap for mobile menu */
+  }
+
+  .leftSection {
+    flex-direction: column; /* Stack logo and mobile demo button */
+    align-items: flex-start; /* Align stacked items to the start */
+    width: auto; /* Allow content to dictate width */
+  }
+
+  .logo {
+    margin-bottom: 0.5rem; /* Space below logo before mobile demo button */
+  }
+
+  /* Show mobile-specific demo button */
+  .mobileRequestDemoButton {
+    display: flex; /* Show this button on mobile */
+    width: fit-content; /* Make button fit content */
+    margin-left: 0; /* Ensure no unwanted left margin */
+  }
+
+  /* Hide desktop navigation and desktop-specific demo button */
+  .desktopNav,
+  .desktopRequestDemoButton {
+    display: none;
+  }
+
+  /* Show hamburger button on mobile */
+  .hamburgerButton {
+    display: block;
+  }
+
+  /* Mobile menu overlay */
+  .mobileNavOverlay.open {
+    display: flex; /* Show when menu is open */
+  }
 }
