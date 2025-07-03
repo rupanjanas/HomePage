@@ -1,34 +1,65 @@
+body {
+  margin: 0;
+  overflow: hidden; /* Prevent scrollbars */
+}
+
 .grid-background {
   display: grid;
+  /* Auto-fill columns, each tile at least 80px, flexing to fill space */
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  grid-auto-rows: 80px;
-  width: 100vw;
-  height: 100vh;
-  background: white;
-  padding: 4px;
-  overflow: hidden;
-  position: absolute;
+  grid-auto-rows: 80px; /* Fixed height for rows */
+  width: 100vw; /* Cover full viewport width */
+  height: 100vh; /* Cover full viewport height */
+  background: white; /* Screen background */
+  padding: 4px; /* Small padding around the grid */
+  overflow: hidden; /* Hide anything that goes outside the grid area */
+  position: absolute; /* Position absolutely to cover the screen */
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -1; /* Place it behind other content */
+  perspective: 1000px; /* Crucial for visible Z-axis movement */
 }
 
 .tile {
-  background: #f9f9f9;
+  background: #f9f9f9; /* Tile background color */
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.05),
-              inset 0 -2px 4px rgba(255,255,255,0.8);
-  border-radius: 4px;
-  animation: ripple 2s ease-in-out infinite;
-  transform-origin: center;
+              inset 0 -2px 4px rgba(255,255,255,0.8),
+              0 4px 8px rgba(0,0,0,0.1); /* Base subtle drop shadow */
+  border-radius: 4px; /* Rounded corners for tiles */
+  animation: popOut 3s ease-in-out infinite; /* Apply the popOut animation */
+  transform-origin: center; /* Ensure 3D transforms originate from the center */
+  transform-style: preserve-3d; /* Allows for true 3D transformations */
 }
 
-@keyframes ripple {
-  0%, 100% {
-    transform: scale(1);
+/* The @keyframes for the pop out animation (Z-direction and shadow) */
+@keyframes popOut {
+  0% {
+    transform: translateZ(0); /* Start at Z-position 0 */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05),
+                inset 0 -2px 4px rgba(255,255,255,0.8),
+                0 4px 8px rgba(0,0,0,0.1); /* Match initial shadow */
     opacity: 1;
   }
-  50% {
-    transform: scale(0.96);
-    opacity: 0.95;
+  10% {
+    transform: translateZ(50px); /* Move 50px towards the viewer */
+    /* Larger, more spread-out, and slightly darker shadow when popped out */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05),
+                inset 0 -2px 4px rgba(255,255,255,0.8),
+                0 15px 30px rgba(0,0,0,0.3); /* Larger, softer shadow */
+    opacity: 1;
+  }
+  20% {
+    transform: translateZ(0); /* Go back to Z-position 0 */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05),
+                inset 0 -2px 4px rgba(255,255,255,0.8),
+                0 4px 8px rgba(0,0,0,0.1); /* Return to initial shadow */
+    opacity: 1;
+  }
+  100% {
+    transform: translateZ(0); /* Remain at Z-position 0 for the rest of the cycle */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05),
+                inset 0 -2px 4px rgba(255,255,255,0.8),
+                0 4px 8px rgba(0,0,0,0.1); /* Ensure consistent shadow at rest */
+    opacity: 1;
   }
 }
