@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  overflow: hidden; /* Prevent scrollbars */
 }
 
 .grid-background {
@@ -10,9 +9,7 @@ body {
   grid-auto-rows: 80px; /* Fixed height for rows */
   width: 100vw; /* Cover full viewport width */
   height: 100vh; /* Cover full viewport height */
-  background: white; /* Screen background */
   padding: 4px; /* Small padding around the grid */
-  overflow: hidden; /* Hide anything that goes outside the grid area */
   position: absolute; /* Position absolutely to cover the screen */
   top: 0;
   left: 0;

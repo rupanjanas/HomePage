@@ -31,11 +31,12 @@ const Header = () => {
         </div>
 
         {/* Mobile Request a Demo Button (hidden on desktop via CSS) */}
-        <button className={styles.mobileRequestDemoButton}>
+        
+      </div>
+      <button className={styles.mobileRequestDemoButton}>
           <Play size={16} />
           REQUEST A DEMO
         </button>
-      </div>
 
       {/* Right Section: Hamburger/Close Icon (Mobile) & Nav + Desktop Request Demo Button */}
       <div className={styles.rightSection}>

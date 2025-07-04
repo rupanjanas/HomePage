@@ -1,0 +1,110 @@
+/* src/components/DarkHeroSection/DarkHeroSection.module.css */
+
+/* Overall Container for the Hero Section */
+.heroContainer {
+  position: relative; /* Ensure this is present to be a reference for absolute children */
+  width: 100vw;
+  min-height: 100vh; /* Ensures it takes full viewport height */
+  display: flex;
+  flex-direction: column;
+  color: white; /* Default text color for the section */
+  background-color: #222222; /* Solid background color for the DarkHeroSection itself */
+}
+
+/* Main Content Styles - KEEP THESE */
+.heroMainContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  line-height: 1.2;
+  
+  /* --- IMPORTANT ADDITIONS FOR Z-INDEX AND POSITIONING --- */
+  position: relative; /* Creates a new stacking context for its children */
+  z-index: 1; /* Places this content ABOVE the ScrollingRectangles (which should be z-index: 0) */
+  /* --- END IMPORTANT ADDITIONS --- */
+}
+
+.heroMainHeading {
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  margin-bottom: 0.5rem;
+}
+
+.heroLine {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.heroLine1 {
+  font-size: 60px;
+  color: white;
+}
+
+.heroLine2 {
+  font-size: 2.25rem;
+  color: rgb(66, 133, 244);
+}
+
+.heroLine3 {
+  font-size: 2.25rem;
+  color: rgb(66, 133, 244);
+}
+
+/* TRY IT OUT NOW Button - KEEP THESE */
+.heroTryItOutButton {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  width: fit-content;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  margin-top: 2rem;
+}
+
+.heroTryItOutButton:hover {
+  background-color: white;
+  color: #222222;
+  border-color: rgb(66, 133, 244);
+}
+
+/* Scroll Down Indicator - KEEP THESE (if present) */
+/* (Assuming you have a scroll down indicator outside of heroMainContent) */
+
+
+/* ============================================== */
+/* MOBILE RESPONSIVENESS for Hero Section */
+/* ============================================== */
+@media (max-width: 767px) {
+  /* Only keep rules relevant to .heroMainContent, .heroTryItOutButton, .heroScrollDownIndicator */
+  /* Remove header-related media queries */
+
+  /* Responsive heading sizes for mobile */
+  .heroLine1,
+  .heroLine2,
+  .heroLine3 {
+    font-size: 1.5rem;
+  }
+
+  @media (min-width: 480px) {
+    .heroLine1,
+    .heroLine2,
+    .heroLine3 {
+      font-size: 1.8rem;
+    }
+  }
+  @media (min-width: 640px) {
+    .heroLine1,
+    .heroLine2,
+    .heroLine3 {
+      font-size: 2.25rem;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+/* src/components/DetailSectionsWrapper/DetailSectionsWrapper.module.css */
+
+.wrapper {
+  /* This container needs enough height for the sticky effect to work */
+  /* Each sticky section will occupy its own height when scrolled to */
+  /* The total height should be sum of all sticky sections' heights minus (N-1 * viewport height) to allow overlap */
+  /* A simple large height or content-driven height usually suffices for testing */
+  height: 200vh; /* Example: 200vh for 2 sections, 100vh for each to "stick" and cover */
+  position: relative; /* If you have any absolutely positioned children that reference this */
+}
+
+.stickySection {
+  position: sticky;
+  top: 0; /* Sticks to the top of the viewport */
+  height: 100vh; /* Each section takes full viewport height when sticky */
+  width: 100%;
+  overflow: hidden; /* Hide any content that might overflow during transitions */
+  display: flex; /* Ensure content inside aligns correctly */
+  flex-direction: column; /* Or whatever layout your section needs */
+  justify-content: center; /* Center content vertically if desired */
+  align-items: center; /* Center content horizontally if desired */
+  transition: transform 0.3s ease-out; /* Optional: smooth transition if you add transform effects */
+
+  /* Ensure z-index increases for later sections to overlap earlier ones */
+  /* This can be managed by JS or by specific classes for each section */
+}
+
+/* Specific z-index for each section if needed, or rely on source order */
+.wrapper > div:nth-child(1) {
+  z-index: 10;
+}
+
+.wrapper > div:nth-child(2) {
+  z-index: 20; /* Higher z-index for the second section to overlap the first */
+}
+/* And so on for subsequent sticky sections */

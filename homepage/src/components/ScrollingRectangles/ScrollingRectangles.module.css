@@ -1,0 +1,54 @@
+/* src/components/ScrollingRectangles/ScrollingRectangles.module.css */
+
+.rectanglesContainer {
+  position: absolute; /* Position it behind DarkHeroSection content */
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  height: 30%; /* Cover the entire DarkHeroSection */
+  overflow: hidden; /* Hide anything outside this container */
+  z-index: 0; /* Placed above DarkHeroSection's background, but below main content */
+}
+
+.rectanglesInner {
+  display: flex;
+  height: 100%; /* Occupy full height of container */
+  width: max-content; /* Allows the flex items to extend horizontally */
+  /* transform is now controlled by JavaScript, so no CSS animation here */
+}
+
+.rectangle {
+  width: 80px; /* Width of each rectangle */
+  height: 100%; /* Rectangles fill the height */
+  margin: 0 2px; /* Spacing between rectangles */
+  
+  /* Frosty Finish Styles */
+  background-color: rgba(44, 44, 44, 0.85); /* Base dark color (#2c2c2c) with 85% opacity for frostiness */
+  box-shadow: 
+    inset 0 0 10px rgba(255, 255, 255, 0.2), /* Inner light glow for subtle icy effect */
+    inset 0 0 5px rgba(0, 0, 0, 0.1), /* Subtle inner shadow */
+    0 2px 8px rgba(0, 0, 0, 0.15); /* Softer, slightly more diffused outer shadow */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Very subtle, translucent white border for an icy edge */
+  border-radius: 4px; /* Slightly rounded corners */
+
+  flex-shrink: 0; /* Prevent rectangles from shrinking */
+  display: flex; /* For potential centering of future content if needed */
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; /* Include padding/border in width/height */
+  
+  /* Add a smooth transition for future rotations */
+  transition: transform 0.3s ease-out; 
+}
+
+.rotatableRectangle {
+  border: 2px solid rgb(66, 133, 244); /* Blue border for rotatable ones */
+}
+
+/* Adjust rectangle size for smaller screens */
+@media (max-width: 768px) {
+  .rectangle {
+    width: 80px;
+    margin: 0 2px;
+  }
+}

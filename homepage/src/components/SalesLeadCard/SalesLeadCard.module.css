@@ -1,0 +1,125 @@
+/* src/components/SalesLeadSection/SalesLeadSection.module.css */
+
+.salesLeadSection {
+  background-color: #f7f7f7; /* Light grey/off-white background */
+  color: #333; /* Dark text for contrast */
+  padding: 80px 40px;
+  min-height: 80vh; /* Will be adjusted by sticky behavior later */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  /* Add padding-top/bottom to ensure content doesn't get hidden under sticky header */
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+.sectionNumber {
+  color: #777; /* Slightly greyed out number */
+  margin-right: 15px;
+  font-size: 1.8rem; /* Smaller than the text */
+}
+
+.contentWrapper {
+  display: flex;
+  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  gap: 50px; /* Space between description and circles */
+  align-items: flex-start; /* Align items to the top */
+  justify-content: space-between; /* Push description left, circles right */
+  flex-grow: 1; /* Allow wrapper to take available space */
+}
+
+.descriptionText {
+  flex: 1; /* Allow description to grow */
+  max-width: 45%; /* Limit width of description */
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+  text-align: left;
+}
+
+.circlesGridContainer {
+  flex: 1; /* Allow container to grow */
+  max-width: 45%; /* Limit width */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for circles */
+  gap: 20px; /* Space between circles */
+  justify-items: center; /* Center items in their grid cells */
+  align-items: center;
+}
+
+.circle {
+  width: 80px; /* Size of the circle */
+  height: 80px;
+  border-radius: 50%; /* Make it a circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white; /* White text for numbers/plus */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.circleBlue {
+  background-color: rgb(66, 133, 244); /* Blue color */
+}
+
+.circleRed {
+  background-color: rgb(220, 50, 50); /* Red color */
+}
+
+.operator {
+  font-size: 2.5rem; /* Larger for the plus sign */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .salesLeadSection {
+    padding: 60px 20px;
+  }
+
+  .sectionTitle {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .sectionNumber {
+    font-size: 1.5rem;
+  }
+
+  .contentWrapper {
+    flex-direction: column; /* Stack content vertically */
+    gap: 30px;
+  }
+
+  .descriptionText,
+  .circlesGridContainer {
+    max-width: 100%; /* Take full width */
+    text-align: center; /* Center text on small screens */
+  }
+
+  .circlesGridContainer {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Adjust columns for smaller screens */
+    gap: 15px;
+  }
+
+  .circle {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  .operator {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+}

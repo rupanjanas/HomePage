@@ -1,0 +1,120 @@
+/* src/components/FeaturesSection/FeaturesSection.module.css */
+
+.featuresSection {
+  background-color: white; /* White background as per image */
+  color: #333; /* Dark text color for light background */
+  min-height: 80vh; /* Full viewport height */
+  position: relative; /* Essential for absolute positioning of children */
+  padding: 80px 40px; /* Padding for the section */
+  box-sizing: border-box;
+  /* Removed display: flex, flex-direction, justify-content, align-items here
+     as children will be absolutely positioned */
+}
+
+.featuresHeading {
+  position: absolute; /* Position absolutely within .featuresSection */
+  top: 50%; /* Center vertically relative to parent */
+  left: 50%; /* Center horizontally relative to parent */
+  transform: translate(-50%, -50%); /* Adjust for its own width/height to truly center */
+  z-index: 10; /* Make sure it's on top of the feature boxes */
+  
+  font-size: 4vw; /* Responsive font size */
+  font-weight: 500;
+  /* margin-bottom is no longer needed with absolute positioning */
+  text-align: center;
+  white-space: nowrap; /* Prevent "Features" from wrapping if space is tight */
+}
+
+.featuresBlue {
+  color: rgb(66, 133, 244); /* Your primary blue color */
+}
+
+.featureBoxesContainer {
+  position: absolute; /* Position absolutely within .featuresSection */
+  top: 50%; /* Center vertically relative to parent */
+  left: 50%; /* Center horizontally relative to parent */
+  transform: translate(-50%, -50%); /* Adjust for its own width/height to truly center */
+  z-index: 5; /* Make sure it's below the heading */
+  
+  display: flex;
+  /* Initial gap for reference, will be overridden by inline style from JS */
+  gap: 40px; /* Matches initial state in JSX */
+  justify-content: center;
+  align-items: center;
+  /* flex-grow is not needed with absolute positioning */
+  transition: gap 0.1s linear; /* Smooth transition for gap changes */
+  width: 100%; /* Ensure it spans the width to allow gap increase */
+}
+
+.featureBox {
+  width: 80px; /* Width of each box - remains constant */
+  height: 200px; /* Height of each box - remains constant */
+  border: 2px solid lightgray; /* Light grey border for the outlines */
+  border-radius: 4px;
+  background-color: transparent; /* Transparent background */
+}
+
+.keepScrolling {
+  position: absolute; /* Position relative to .featuresSection */
+  bottom: 20px; /* Distance from bottom */
+  right: 20px; /* Distance from right */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #777; /* Softer color for the text */
+  text-transform: uppercase;
+}
+
+.keepScrolling svg {
+  transform: rotate(90deg); /* Rotate arrow to point down */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+  .featuresHeading {
+    font-size: 5vw;
+    /* No need for margin-bottom with absolute positioning */
+  }
+  .featureBox {
+    width: 150px;
+    height: 250px;
+  }
+  /* .featureBoxesContainer gap is controlled by JS */
+}
+
+@media (max-width: 768px) {
+  .featuresSection {
+    padding: 60px 20px;
+  }
+  .featuresHeading {
+    font-size: 7vw;
+    /* Remove margin-bottom from here too */
+    white-space: normal; /* Allow text to wrap on smaller screens */
+    width: 80%; /* Give it a defined width to wrap */
+  }
+  .featureBoxesContainer {
+    flex-direction: column; /* Stack boxes vertically on small screens */
+    /* gap is controlled by JS */
+  }
+  .featureBox {
+    width: 200px; /* Adjust width for stacked layout */
+    height: 180px;
+  }
+  .keepScrolling {
+    bottom: 15px;
+    right: 15px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featuresHeading {
+    font-size: 9vw;
+  }
+  .featureBox {
+    width: 150px;
+    height: 150px;
+  }
+}

@@ -1,0 +1,120 @@
+/* src/components/AnalyticsSection/AnalyticsSection.module.css */
+
+.analyticsSection {
+  background-color: #f7f7f7;
+  color: #333;
+  padding: 80px 40px;
+  min-height: 80vh; /* This section now acts as a "sticky" point for its internal animation */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  /* Add position: relative if you want elements fixed within this section during animation */
+  position: relative;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+.sectionNumber {
+  color: #777;
+  margin-right: 15px;
+  font-size: 1.8rem;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.descriptionText {
+  flex: 1;
+  max-width: 45%;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+  text-align: left;
+}
+
+.analyticsBarsContainer {
+  flex: 1;
+  max-width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.barItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.barPercentage {
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: 45px;
+  text-align: right;
+}
+
+.bar {
+  background-color: lightgray;
+  height: 10px; /* Fixed height */
+  border-radius: 5px;
+  margin-left: auto; /* Pushes the bar to the right */
+  /* Remove transitions here, they will be controlled by JS for direct manipulation */
+  /* Initial width: 0 and opacity: 0 will be set by the inline style in JS */
+}
+
+.barBlue {
+  background-color: rgb(66, 133, 244);
+}
+
+.barRed {
+  background-color: rgb(220, 50, 50);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .analyticsSection {
+    padding: 60px 20px;
+  }
+  .sectionTitle {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+  .sectionNumber {
+    font-size: 1.5rem;
+  }
+  .contentWrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .descriptionText,
+  .analyticsBarsContainer {
+    max-width: 100%;
+    text-align: center;
+  }
+  .analyticsBarsContainer {
+    align-items: center;
+  }
+  .barItem {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+}
