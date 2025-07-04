@@ -1,0 +1,174 @@
+/* src/components/MobileCRMSection/MobileCRMSection.module.css */
+
+.mobileCRMSection {
+  background-color: #f7f7f7; /* Light grey/off-white background */
+  color: #333; /* Dark text for contrast */
+  padding: 80px 40px;
+  min-height: 80vh; /* Will be adjusted by sticky behavior later */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+.sectionNumber {
+  color: #777; /* Slightly greyed out number */
+  margin-right: 15px;
+  font-size: 1.8rem; /* Smaller than the text */
+}
+
+.contentWrapper {
+  display: flex;
+  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  gap: 50px; /* Space between description and cards */
+  align-items: flex-start; /* Align items to the top */
+  justify-content: space-between; /* Push description left, cards right */
+  flex-grow: 1; /* Allow wrapper to take available space */
+}
+
+.descriptionText {
+  flex: 1; /* Allow description to grow */
+  max-width: 45%; /* Limit width of description */
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+  text-align: left;
+}
+
+.appFeaturesGridContainer {
+  flex: 1; /* Allow container to grow */
+  max-width: 45%; /* Limit width */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns for the cards */
+  grid-template-rows: repeat(2, 1fr); /* 2 rows */
+  gap: 30px; /* Space between cards */
+  justify-items: center; /* Center items in their grid cells */
+  align-items: center;
+}
+
+.featureCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; /* Slight rounded corners for all cards */
+}
+
+/* Specific card types and sizes */
+.trapezoid-top {
+  width: 140px;
+  height: 80px;
+  /* Using clip-path for trapezoid shape */
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+  transform: rotateY(180deg); /* Mirror the trapezoid visually if needed to match image */
+}
+
+.square {
+  width: 150px;
+  height: 150px;
+}
+
+.rectangle-vertical {
+  width: 100px;
+  height: 160px;
+}
+
+.trapezoid-bottom {
+  width: 160px;
+  height: 90px;
+  clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%);
+  /* The SJA1o text appears rotated. You might need to rotate the span inside here */
+}
+
+/* Colors */
+.blue {
+  background-color: rgb(66, 133, 244); /* Primary blue */
+}
+
+.light-blue {
+  background-color: rgb(173, 216, 230); /* Lighter blue */
+}
+
+.red {
+  background-color: rgb(220, 50, 50); /* Red */
+}
+
+.cardText {
+  font-size: 1.8rem;
+  /* If text needs rotation within a trapezoid, apply here */
+  /* For 'SJA1o' it looks like it's rotated vertically slightly */
+  /* For example: transform: rotate(90deg); or transform: rotate(-90deg); */
+}
+
+.cardIcon {
+  width: 60%;
+  height: 60%;
+  color: white; /* Icon color is white */
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .mobileCRMSection {
+    padding: 60px 20px;
+  }
+
+  .sectionTitle {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .sectionNumber {
+    font-size: 1.5rem;
+  }
+
+  .contentWrapper {
+    flex-direction: column; /* Stack content vertically */
+    gap: 30px;
+  }
+
+  .descriptionText,
+  .appFeaturesGridContainer {
+    max-width: 100%; /* Take full width */
+    text-align: center; /* Center text on small screens */
+  }
+
+  .appFeaturesGridContainer {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust columns for smaller screens */
+    gap: 20px;
+  }
+
+  .trapezoid-top, .square, .rectangle-vertical, .trapezoid-bottom {
+    width: 100px; /* Adjust size for mobile */
+    height: 60px;
+  }
+  .square {
+    height: 100px;
+  }
+  .rectangle-vertical {
+    height: 120px;
+  }
+  .cardText {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+  .appFeaturesGridContainer {
+    gap: 15px;
+  }
+  .featureCard {
+    /* Further size adjustments if needed */
+  }
+}

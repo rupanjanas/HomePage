@@ -2,6 +2,7 @@
 import React from 'react';
 import AnalyticsSection from '../AnalyticsCard/AnalyticsCard';
 import SalesLeadSection from '../SalesLeadCard/SalesLeadCard';
+import MobileCRMSection from '../MobileCRMCard/MobileCRMCard';
 import styles from './DetailSectionWrapper.module.css';
 
 const DetailSectionsWrapper = () => {
@@ -18,6 +19,10 @@ const DetailSectionsWrapper = () => {
       </div>
 
       {/* Add more detail sections here if needed later */}
+       <div className={styles.stickySection} >
+        <MobileCRMSection />
+      </div>
+
     </div>
   );
 };

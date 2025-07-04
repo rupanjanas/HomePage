@@ -32,5 +32,7 @@
 
 .wrapper > div:nth-child(2) {
   z-index: 20; /* Higher z-index for the second section to overlap the first */
+
+
 }
 /* And so on for subsequent sticky sections */
