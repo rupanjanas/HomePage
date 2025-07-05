@@ -1,0 +1,81 @@
+/* src/components/Partners/Partners.module.css */
+
+.partnersSection {
+  background-color: #f8f8f8; /* Light background as seen in the image */
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.title {
+  font-size: 3.2rem; /* Large title font size */
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 60px; /* Space below title before logos */
+}
+
+.blueText {
+  color: rgb(66, 133, 244); /* Blue color for "Partners" */
+}
+
+.logoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid columns */
+  gap: 40px; /* Space between logos */
+  max-width: 1200px; /* Max width for the grid */
+  margin: 0 auto; /* Center the grid */
+}
+
+.logoItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.partnerLogo {
+  max-width: 100px; /* Adjust based on your logo sizes */
+  height: auto;
+  opacity: 0.6; /* Slightly faded appearance */
+  transition: opacity 0.3s ease;
+}
+
+.partnerLogo:hover {
+  opacity: 1; /* Full opacity on hover */
+}
+
+.partnerName {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #777; /* Grey text for names */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .partnersSection {
+    padding: 60px 20px;
+  }
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+  .logoGrid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+  }
+  .partnerLogo {
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+  .logoGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on very small screens */
+    gap: 20px;
+  }
+}

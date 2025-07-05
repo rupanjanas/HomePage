@@ -1,0 +1,178 @@
+/* src/components/OurValuesSection/OurValuesSection.module.css */
+
+.ourValuesSection {
+  background-color: #2a2a2a; /* Dark background as seen in images */
+  color: #fff;
+  padding-top:40px ;
+  min-height: 100vh; /* Ensures the section itself can act as a sticky container if placed inside another sticky wrapper */
+  display: flex;
+  box-sizing: border-box;
+  overflow: hidden; /* Helps contain children and avoids issues with sticky elements creating scrollbars */
+  position: relative; /* Provides a positioning context for absolute children like top-right rectangles */
+}
+
+.mainTitleContainer {
+  flex: 1;
+  max-width: 45%; /* Limits the width of the title column */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Helps push bottom elements like rectangles down */
+  position: relative;
+}
+
+.mainTitle {
+  font-size: 3.5rem; /* Large font size for "Our Values" */
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: left;
+  margin-top: 0;
+  color: #fff;
+}
+
+.mainTitleBlue {
+  color: rgb(66, 133, 244); /* Blue color for "Values" */
+}
+
+.topRightRectangles {
+  position: absolute; /* Keep absolute */
+  top: 0; /* Align to the top of .ourValuesSection */
+  left:0; /* Align to the right of .ourValuesSection */
+  display: flex;
+  align-items: flex-end; /* As per your current requirement */
+  gap: 10px;
+  /* Add z-index to ensure it sits on top of other content if it overlaps */
+  z-index: 10; /* Make sure this is higher than other elements it might overlap with */
+ 
+}
+
+.topRightRectangle {
+  width: 50px; /* Example size for the outline rectangles */
+  height: 80px;
+  border: 1px solid rgba(66, 133, 244, 0.5); /* Blue outline with transparency */
+  border-radius: 3px;
+}
+
+.valuesCardsContainer {
+  flex: 1;
+  max-width: 40%; /* Limits the width of the cards column */
+  display: flex;
+  flex-direction: column; /* Crucial: Stack cards vertically for sticky effect */
+ padding-top: 100px;
+  min-height: 150vh; /* Example: Provides sufficient scroll depth for 3 cards to stick and overlap */
+}
+
+.valueCardStickyWrapper {
+  position: sticky; /* Makes each card's wrapper sticky within .valuesCardsContainer */
+  /* The 'top' property is controlled by the inline style in JSX for staggered stacking */
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 20px; /* Provides a slight gap/margin at the bottom of each sticky card when it's stuck */
+  z-index: auto; /* Sticky elements derive their stacking order naturally from their DOM order when active */
+}
+
+.valueCard {
+  background-color: black; /* Slightly darker background for the cards */
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border: 1px solid #444; /* Subtle border for the cards */
+  box-sizing: border-box;
+  min-height: 400px; /* Ensures each card has a minimum height, allowing subsequent cards to scroll past it */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes bottom visuals to the bottom */
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cardNumber {
+  font-size: 1.2rem;
+  color: #999;
+  margin-right: 10px;
+}
+
+.cardDot {
+  width: 8px;
+  height: 8px;
+  background-color: rgb(66, 133, 244); /* Blue dot */
+  border-radius: 50%;
+}
+
+.cardTitle {
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.cardTitleBlue {
+  color: rgb(66, 133, 244); /* Blue for the second word of the title */
+}
+
+.cardDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #bbb;
+}
+
+.bottomVisualCircles,
+.bottomVisualTriangles {
+  margin-top: 30px; /* Space between description and visuals */
+  display: flex;
+  justify-content: flex-end; /* Aligns visuals to the right */
+  align-items: flex-end;
+}
+/* SVG stroke colors are defined inline in JSX */
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .ourValuesSection {
+    flex-direction: column; /* Stacks title and cards vertically on small screens */
+    padding: 60px 20px;
+  }
+  .mainTitleContainer {
+    max-width: 100%;
+    text-align: center;
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+  .mainTitle {
+    font-size: 2.8rem;
+  }
+  .topRightRectangles {
+    position: static; /* Removes absolute positioning on mobile */
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .valuesCardsContainer {
+    max-width: 100%;
+    min-height: auto; /* Allows content to define height on mobile when sticky is often disabled */
+  }
+  .valueCardStickyWrapper {
+    position: static; /* Important: Disable inner sticky effect on smaller screens for better layout flow */
+    top: auto !important; /* Overrides the inline style for 'top' */
+    padding-bottom: 30px; /* Adds consistent spacing between cards when not sticky */
+  }
+  .valueCard {
+    min-height: auto; /* Allows card height to be content-driven on mobile */
+  }
+  .cardTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 2.2rem;
+  }
+  .cardTitle {
+    font-size: 1.8rem;
+  }
+}

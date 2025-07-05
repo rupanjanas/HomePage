@@ -3,10 +3,10 @@ import React from 'react';
 import styles from './MobileCRMCard.module.css';
 
 const mobileCRMData = [
-  { id: 1, type: 'trapezoid-top', text: '8K', color: 'light-blue' }, // Trapezoid with text
+  { id: 1, type: 'square', text: '87K', color: 'light-blue' }, // Trapezoid with text
   { id: 2, type: 'square', icon: 'line-graph', color: 'red' },      // Red square with icon
   { id: 3, type: 'rectangle-vertical', icon: 'person', color: 'light-blue' }, // Vertical rectangle with person icon
-  { id: 4, type: 'trapezoid-bottom', text: 'SJA1o', color: 'blue' }, // Trapezoid with rotated text
+  { id: 4, type: 'square', text: '27%', color: 'blue' }, // Trapezoid with rotated text
 ];
 
 const MobileCRMSection = () => {

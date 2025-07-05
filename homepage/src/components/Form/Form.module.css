@@ -1,0 +1,206 @@
+/* src/components/Form/Form.module.css */
+
+.formSection {
+  background-color: #2a2a2a; /* Dark background */
+  color: #fff;
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column; /* Stack intro content and the main card vertically */
+  min-height: 80vh;
+  box-sizing: border-box;
+}
+
+/* Styles for the intro content (title and subtitle) - now at the top of the section */
+.introContent {
+  margin-bottom: 50px; /* Space below intro text and above the main card */
+  max-width: 900px; /* Limit width of the title for better readability */
+  padding: 0 20px; /* Add some horizontal padding */
+}
+
+.introTitle {
+  font-size: 3.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.introSubtitle {
+  font-size: 1.1rem;
+  color: #bbb;
+  line-height: 1.5;
+}
+
+.blueText {
+  color: rgb(66, 133, 244);
+}
+
+/* NEW: Styles for the main card that wraps both the SVG and the form */
+.mainFormCard {
+  background-color: #383838; /* Lighter dark color than the main section background */
+  border-radius: 8px; /* Slightly rounded corners */
+  padding: 40px; /* Padding inside the form card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  width: 100%;
+  max-width: 1200px; /* Limit the max width of the card */
+  box-sizing: border-box;
+  display: flex; /* Arrange SVG and form side-by-side */
+  gap: 60px; /* Space between SVG and form */
+  align-items: center; /* Vertically align items in the card */
+}
+
+/* Visual Circle SVG - now within .mainFormCard */
+.visualCircle {
+  flex-shrink: 0; /* Prevent it from shrinking */
+  width: 40%; /* Allocate space for the SVG on the left */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visualCircle svg {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+}
+
+/* Form Styling (adjust flex properties to take remaining space) */
+.contactForm {
+  flex-grow: 1; /* Allow the form to take up available space */
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  max-width: 60%; /* Limit the form's width within the card for better layout */
+}
+
+.nameFields,
+.emailPhoneFields {
+  display: flex;
+  gap: 30px;
+}
+
+.inputGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.inputField {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 10px 0;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.inputField:focus {
+  border-bottom-color: rgb(66, 133, 244);
+}
+
+.messageField {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.phoneDropdownArrow {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  color: rgb(66, 133, 244);
+  pointer-events: none;
+}
+
+.submitButton {
+  background-color: #555;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  align-self: flex-start;
+  margin-top: 20px;
+}
+
+.submitButton:hover {
+  background-color: rgb(66, 133, 244);
+  transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .formSection {
+    padding: 60px 20px;
+  }
+
+  .introContent {
+    margin-bottom: 30px;
+  }
+
+  .introTitle {
+    font-size: 2.8rem;
+  }
+
+  .introSubtitle {
+    font-size: 1rem;
+  }
+
+  .mainFormCard {
+    flex-direction: column; /* Stack SVG and form vertically */
+    padding: 30px;
+    gap: 40px; /* Space between stacked SVG and form */
+  }
+
+  .visualCircle {
+    width: 100%; /* Take full width when stacked */
+    padding-right: 0;
+  }
+
+  .visualCircle svg {
+    max-width: 150px; /* Adjust size for smaller screens */
+  }
+
+  .contactForm {
+    max-width: 100%; /* Allow form to take full width when stacked */
+  }
+}
+
+@media (max-width: 600px) {
+  .nameFields,
+  .emailPhoneFields {
+    flex-direction: column;
+    gap: 25px;
+  }
+  .introTitle {
+    font-size: 2.2rem;
+  }
+  .mainFormCard {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formSection {
+    padding: 40px 15px;
+  }
+  .introTitle {
+    font-size: 1.8rem;
+  }
+  .introSubtitle {
+    font-size: 0.9rem;
+  }
+}

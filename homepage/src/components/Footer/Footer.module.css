@@ -1,0 +1,242 @@
+/* src/components/Footer/Footer.module.css */
+
+.footerSection {
+  background-color: #2b2b2b; /* Dark background as per image */
+  color: #f0f0f0; /* Light text color */
+  padding-top: 80px; /* Padding for the top content */
+}
+
+.topContent {
+  display: flex;
+  justify-content: space-around; /* Distribute space among sections */
+  padding: 0 40px 60px 40px; /* Horizontal padding, bottom padding for separation from copyright */
+  max-width: 1400px; /* Limit width for larger screens */
+  margin: 0 auto; /* Center content */
+  flex-wrap: wrap; /* Allow sections to wrap on smaller screens */
+  gap: 40px; /* Gap between columns for responsiveness */
+}
+
+.brandInfo {
+  flex: 1; /* Allows it to grow/shrink, taking equal space initially */
+  min-width: 200px; /* Minimum width for brand info */
+  max-width: 250px; /* Keep brand info section relatively compact */
+  text-align: left;
+}
+
+.logo {
+  font-size: 1.5rem; /* Logo text size */
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.subscribeSection,
+.contactSection, /* Keep these as well for general column behavior */
+.menuSection {
+  flex: 1; /* Allows them to grow/shrink, taking equal space initially */
+  min-width: 200px; /* Minimum width for each section */
+  max-width: 280px; /* Max width to control layout, preventing them from becoming too wide */
+  text-align: left;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.subscribeText {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.emailInputGroup {
+  margin-bottom: 15px;
+}
+
+.newsletterEmailInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Light grey underline */
+  width: 100%;
+  padding: 10px 0;
+  color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.newsletterEmailInput::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.newsletterEmailInput:focus {
+  border-bottom-color: rgb(66, 133, 244); /* Blue on focus */
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.checkbox {
+  margin-right: 10px;
+  accent-color: rgb(66, 133, 244); /* Blue checkbox color */
+}
+
+.checkboxLabel {
+  font-size: 0.85rem;
+  color: #bbb;
+}
+
+.subscribeButton {
+  background-color: #555; /* Dark grey button */
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.subscribeButton:hover {
+  background-color: rgb(66, 133, 244); /* Blue on hover */
+}
+
+.socialLinks {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px; /* Space between social icons */
+}
+
+.socialIcon {
+  font-size: 1.2rem;
+  color: #f0f0f0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.socialIcon:hover {
+  color: rgb(66, 133, 244);
+}
+
+.contactDetail {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 8px; /* Space between contact details */
+}
+
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuList li {
+  margin-bottom: 10px;
+}
+
+.menuLink {
+  text-decoration: none;
+  color: #bbb;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.menuLink:hover {
+  color: rgb(66, 133, 244);
+}
+
+.bottomBar {
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* This is the horizontal line above copyright */
+  padding: 20px 40px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #bbb;
+}
+
+.copyright {
+  margin: 0;
+}
+
+.wixStudioLink {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.wixStudioLink:hover {
+  color: rgb(66, 133, 244);
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .topContent {
+    flex-direction: column; /* Stack columns vertically on smaller screens */
+    align-items: center; /* Center items when stacked */
+    padding: 0 20px 40px 20px;
+    gap: 60px; /* Increase gap between stacked sections */
+  }
+
+  .brandInfo,
+  .subscribeSection,
+  .contactSection,
+  .menuSection {
+    min-width: unset; /* Remove min-width to allow flexible sizing */
+    max-width: 500px; /* Max width for stacked content */
+    width: 100%;
+    text-align: center; /* Center text for all sections */
+  }
+
+  .logo {
+    margin-bottom: 30px; /* More space below logo */
+  }
+
+  .socialLinks {
+    justify-content: center; /* Center social icons */
+  }
+
+  .menuList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center menu items */
+    gap: 15px 30px; /* Space between menu items */
+  }
+
+  .menuList li {
+    margin-bottom: 0; /* Remove vertical margin for inline list */
+  }
+}
+
+@media (max-width: 480px) {
+  .footerSection {
+    padding-top: 60px;
+  }
+  .topContent {
+    padding: 0 15px 30px 15px;
+    gap: 40px;
+  }
+  .sectionTitle {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  .subscribeButton {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+  .bottomBar {
+    padding: 15px 15px;
+    font-size: 0.75rem;
+  }
+}

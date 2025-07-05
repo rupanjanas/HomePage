@@ -5,8 +5,11 @@ import DarkHeroSection from './components/DarkHeroSection/DarkHeroSection';
 import Empowering from './components/Empowering/Empowering';
 import ServicesCards from './components/ServicesCards/ServicesCards';
 import FeaturesSection from './components/FeaturesSection/FeaturesSection';
-import AnalyticsCard from './components/AnalyticsCard/AnalyticsCard';
 import DetailSectionsWrapper from './components/DetailSectionWrapper/DetailSectionWrapper';
+import OurValuesSection from './components/OurValuesSection/OurValuesSection.js';
+import Partners from './components/Partners/Partners.js';
+import Form from './components/Form/Form.js';
+import Footer from './components/Footer/Footer.js';
 
 function App() {
   return (
@@ -18,6 +21,10 @@ function App() {
       <ServicesCards/>
       <FeaturesSection/>
       <DetailSectionsWrapper/>
+      <OurValuesSection/>
+      <Partners/>
+      <Form/>
+      <Footer/>
     </div>
   );
 }
