@@ -5,7 +5,7 @@
   /* Each sticky section will occupy its own height when scrolled to */
   /* The total height should be sum of all sticky sections' heights minus (N-1 * viewport height) to allow overlap */
   /* A simple large height or content-driven height usually suffices for testing */
-  height: 200vh; /* Example: 200vh for 2 sections, 100vh for each to "stick" and cover */
+  height: 300vh; /* Example: 200vh for 2 sections, 100vh for each to "stick" and cover */
   position: relative; /* If you have any absolutely positioned children that reference this */
 }
 
@@ -32,7 +32,8 @@
 
 .wrapper > div:nth-child(2) {
   z-index: 20; /* Higher z-index for the second section to overlap the first */
-
-
+}
+.wrapper > div:nth-child(3) {
+  z-index: 30; /* Higher z-index for the second section to overlap the first */
 }
 /* And so on for subsequent sticky sections */
