@@ -4,12 +4,17 @@ import styles from './ScrollingRectangles.module.css';
 
 const NUM_RECTANGLES = 50;
 const ROTATABLE_CHANCE = 0.3;
-const SCROLL_SPEED_FACTOR = 0.2; // How fast rectangles scroll horizontally relative to vertical scroll
+const SCROLL_SPEED_FACTOR = 0.6; // How fast rectangles scroll horizontally relative to vertical scroll
 
 const ScrollingRectangles = () => {
   const rectanglesInnerRef = useRef(null);
   const [translateX, setTranslateX] = useState(0);
   const rafId = useRef(null);
+
+  // Initialize fixed set of random indices that will remain consistent across renders
+  const blueIndicesRef = useRef(
+    Array.from({ length: NUM_RECTANGLES }).map(() => Math.random() < ROTATABLE_CHANCE)
+  );
 
   const handleScroll = useCallback(() => {
     if (rafId.current) {
@@ -19,54 +24,58 @@ const ScrollingRectangles = () => {
     rafId.current = requestAnimationFrame(() => {
       if (rectanglesInnerRef.current) {
         const scrollY = window.scrollY;
-        const innerWidth = rectanglesInnerRef.current.scrollWidth / 2; // Get width of one set of duplicated rectangles
+        const innerWidth = rectanglesInnerRef.current.scrollWidth / 2;
 
-        // Calculate horizontal scroll based on vertical scroll
-        // The - (minus) sign makes it scroll left when scrolling down
         let newTranslateX = -(scrollY * SCROLL_SPEED_FACTOR);
-
-        // Implement infinite looping:
-        // When it scrolls past the width of one set of rectangles,
-        // "reset" it by adding the width back, creating a seamless loop.
-        newTranslateX = newTranslateX % innerWidth; // Use modulo to keep it within bounds
+        newTranslateX = newTranslateX % innerWidth;
 
         setTranslateX(newTranslateX);
       }
       rafId.current = null;
     });
-  }, []); // No dependencies for useCallback, as SCROLL_SPEED_FACTOR is constant
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial call to set position on load
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
       if (rafId.current) {
-        cancelAnimationFrame(rafId.current); // Clean up pending RAF on unmount
+        cancelAnimationFrame(rafId.current);
       }
     };
   }, [handleScroll]);
 
-  const rectangles = Array.from({ length: NUM_RECTANGLES }).map((_, index) => {
-    const isRotatable = Math.random() < ROTATABLE_CHANCE;
-    return (
-      <div
-        key={index}
-        className={`${styles.rectangle} ${isRotatable ? styles.rotatableRectangle : ''}`}
-      ></div>
-    );
-  });
+  const renderRectangles = () => {
+    const scrollY = window.scrollY;
+    return Array.from({ length: NUM_RECTANGLES }).map((_, index) => {
+      const isRotatable = blueIndicesRef.current[index];
+      const rotationProgress = (scrollY % 1000) / 1000; // 0 to 1
+      const rotation = isRotatable ? Math.sin(rotationProgress * Math.PI) * 90 : 0;
+
+      return (
+        <div
+          key={index}
+          className={`${styles.rectangle} ${isRotatable ? styles.rotatableRectangle : ''}`}
+          style={{
+            transform: isRotatable ? `rotateY(${rotation}deg)` : undefined,
+            transition: 'transform 0.2s ease-out',
+          }}
+        ></div>
+      );
+    });
+  };
 
   return (
     <div className={styles.rectanglesContainer}>
       <div
         ref={rectanglesInnerRef}
         className={styles.rectanglesInner}
-        style={{ transform: `translateX(${translateX}px)` }} // Apply dynamic transform
+        style={{ transform: `translateX(${translateX}px)` }}
       >
-        {rectangles}
-        {rectangles} {/* Duplicate for seamless looping */}
+        {renderRectangles()}
+        {renderRectangles()}
       </div>
     </div>
   );
