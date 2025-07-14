@@ -7,14 +7,14 @@
 }
 
 .title {
-  font-size: 3.2rem; /* Large title font size */
+  font-size: 3.6rem; /* Large title font size */
   font-weight: 500;
   color: #333;
   margin-bottom: 60px; /* Space below title before logos */
 }
 
 .blueText {
-  color: rgb(66, 133, 244); /* Blue color for "Partners" */
+  color: rgb(29, 104, 223); /* Blue color for "Partners" */
 }
 
 .logoGrid {
@@ -34,10 +34,9 @@
 }
 
 .partnerLogo {
-  max-width: 100px; /* Adjust based on your logo sizes */
+  width: 100%; /* Adjust based on your logo sizes */
   height: auto;
-  opacity: 0.6; /* Slightly faded appearance */
-  transition: opacity 0.3s ease;
+ 
 }
 
 .partnerLogo:hover {
@@ -65,9 +64,15 @@
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 30px;
   }
-  .partnerLogo {
-    max-width: 80px;
-  }
+ .partnerLogo {
+  width: 100%;
+  max-width: 90vw; /* Take up 90% of viewport width */
+  height: auto;
+  opacity:1;
+  display: block;
+  margin: 0 auto; /* Center the image */
+}
+
 }
 
 @media (max-width: 480px) {
