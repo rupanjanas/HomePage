@@ -1,11 +1,29 @@
-// src/components/Form/Form.jsx
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './Form.module.css';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Form = () => {
+  const circlesRef = useRef([]);
+
+  useEffect(() => {
+    gsap.to(circlesRef.current, {
+      x: 0,
+      ease: "power2.out",
+      scrollTrigger: {
+  trigger: circlesRef.current[0].parentNode,
+  start: "top bottom",    // when top of element hits bottom of viewport
+  end: "top center",      // ends when it reaches center
+  scrub: 2,
+}
+
+    });
+  }, []);
+
   return (
     <section className={styles.formSection}>
-      {/* Main title and subtitle for the entire section */}
       <div className={styles.introContent}>
         <h2 className={styles.introTitle}>
           Are You Ready to <br />
@@ -17,18 +35,23 @@ const Form = () => {
         </p>
       </div>
 
-      {/* NEW: This is the main card that contains BOTH the SVG and the form. */}
-      {/* It will have the lighter background color. */}
       <div className={styles.mainFormCard}>
-        {/* Visual Circle SVG - NOW INSIDE THE CARD */}
+        {/* 🔵 Visual Circle Area with 3 animated circles */}
         <div className={styles.visualCircle}>
-          <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="100" cy="100" r="90" stroke="rgb(66, 133, 244)" strokeWidth="2" />
-            <circle cx="100" cy="100" r="60" stroke="rgb(66, 133, 244)" strokeWidth="2" />
-          </svg>
+          {[0, 1, 2].map((_, i) => (
+            <div
+              key={i}
+              ref={el => circlesRef.current[i] = el}
+              style={{ position: "absolute", transform: `translateX(${(i - 1) * 220}px)` }}
+            >
+              <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+                <circle cx="100" cy="100" r="70" stroke="rgb(66, 133, 244)" strokeWidth="2" />
+              </svg>
+            </div>
+          ))}
         </div>
 
-        {/* The form itself - also inside the card */}
+        {/* ✅ Form stays exactly the same */}
         <form className={styles.contactForm}>
           <div className={styles.nameFields}>
             <div className={styles.inputGroup}>
